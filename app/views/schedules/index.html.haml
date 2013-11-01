@@ -46,3 +46,5 @@
               %td
               %td
                 = link_to "<i class='icon-calendar'></i> Schedule".html_safe, edit_schedule_path(event), class: "btn btn-default btn-sm"
+      = will_paginate @artists, previous_label: "&laquo;", next_label: "&raquo;"
+      
