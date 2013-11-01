@@ -1,3 +1,5 @@
 
 <%= render 'layouts/top' %>
-<%= render 'layouts/sub_navbar' %>
+<% if user_signed_in? %>
+	<%= render 'layouts/sub_navbar' %>
+<% end %>
