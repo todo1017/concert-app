@@ -11,7 +11,7 @@ puts 'ROLES'
 Role.find_or_create_by_name({ :name => :admin }, :without_protection => true)
 
 puts 'DEFAULT USERS'
-user = User.find_or_create_by_email :first_name => ENV['ADMIN_NAME'].dup, :last_name =>"O", :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
+user = User.find_or_create_by_email :first_name => "Admin", :last_name =>"P", :email => "admin@concert.com", :password => "changeme", :password_confirmation => "changeme"
 
 puts 'user: ' << user.name
 user.add_role :admin
