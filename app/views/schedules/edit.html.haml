@@ -1,0 +1,69 @@
+.widget.stacked
+  .widget-header
+    %h3
+      Schedule Event
+  .widget-content
+    = simple_form_for @event, url: schedule_path(@event), :html => { :method => :put, :class => 'form-horizontal' } do |f|
+      .clearfix
+        .col-md-4.col-sm-12
+          .form-group
+            = f.label :show_time, "Show Time", class: "col-sm-4"
+            .col-sm-8
+              = f.input_field :show_time, class: "form-control timepicker"
+          .form-group
+            = f.label :time_zone, "Time Zone", class: "col-sm-4"
+            .col-sm-8
+              = f.input :time_zone, label: false, input_html: { class: "form-control" }
+
+          .form-group
+            = f.label :load_time, "Load In Time", class: "col-sm-4"
+            .col-sm-8
+              = f.input_field :load_time, class: "form-control timepicker"
+          
+          .form-group
+            = f.label :load_address, "Load In Address", class: "col-sm-4"
+            .col-sm-8
+              = f.input_field :load_address, class: "form-control"
+          .form-group
+            = f.label :contact_name, "Contact Name", class: "col-sm-4"
+            .col-sm-8
+              = f.input_field :contact_name, class: "form-control"
+          .form-group
+            = f.label :contact_phone, "Contact Phone No", class: "col-sm-4"
+            .col-sm-8
+              = f.input_field :contact_phone, class: "form-control input-phone"
+
+        .col-md-4.col-sm-12
+          .form-group
+            = f.label :hotel_name, "Hotel Name", class: "col-sm-4"
+            .col-sm-8
+              = f.input_field :hotel_name, class: "form-control"
+          .form-group
+            = f.label :hotel_address, "Hotel Address", class: "col-sm-4"
+            .col-sm-8
+              = f.input_field :hotel_address, class: "form-control"
+          .form-group
+            = f.label :backup_content, "Backup Content", class: "col-sm-4"
+            .col-sm-8
+              = f.input_field :backup_content, class: "form-control"
+          .form-group
+            = f.label :backup_phone, "Backup Phone No", class: "col-sm-4"
+            .col-sm-8
+              = f.input_field :backup_phone, class: "form-control input-phone"
+
+        .col-md-4.col-sm-12
+          .checkbox
+            %label
+              = f.input_field :contract_signed, class: "form-control"
+              Contract Signed
+          .checkbox
+            %label
+              = f.input_field :payment_sent, class: "form-control"
+              Payment Sent
+          .checkbox
+            %label
+              = f.input_field :show_review_complete, class: "form-control"
+              Show Review Complete
+      .col-md-12.text-right
+        = f.submit "Update", :class => "btn btn-primary"
+        %a.btn.btn-default{onclick: "history.back();"} Cancel

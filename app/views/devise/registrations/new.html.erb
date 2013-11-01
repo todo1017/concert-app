@@ -1,0 +1,57 @@
+<div class="account-container register stacked">
+  
+  <div class="content clearfix">
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
+
+    <h1>Create Your Account</h1>      
+        
+<!--     <div class="login-social">
+      <p>Sign in using social network:</p>
+      
+      <div class="twitter">
+        <a href="#" class="btn_1">Login with Twitter</a>        
+      </div>
+      
+      <div class="fb">
+        <a href="#" class="btn_2">Login with Facebook</a>       
+      </div>
+    </div> -->
+    <div class="login-fields">
+      <%= hidden_field_tag 'plan', params[:plan] %>
+      
+      <p>Create your free account:</p>
+      
+      <div class="field">
+        <%= f.input :first_name, input_html: { class: "form-control" }, placeholder: "First Name", :autofocus => true %> 
+      </div> <!-- /field -->
+      
+      <div class="field">
+        <%= f.input :last_name, input_html: { class: "form-control" }, placeholder: "Last Name", :autofocus => true %> 
+      </div> <!-- /field -->
+      
+      
+      <div class="field">
+        <%= f.input :email, input_html: { class: "form-control" }, placeholder: "Email", :autofocus => true %> 
+      </div> <!-- /field -->
+      
+      <div class="field">
+        <%= f.input :password, input_html: { class: "form-control" }, placeholder: "Password", :autofocus => true %> 
+      </div> <!-- /field -->
+      
+      <div class="field">
+        <%= f.input :password_confirmation, input_html: { class: "form-control" }, placeholder: "Password Confirmation", :autofocus => true %> 
+      </div> <!-- /field -->
+      
+    </div> <!-- /login-fields -->
+
+    <div class="login-actions">
+      <span class="login-checkbox">
+        <input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
+        <label class="choice" for="Field">I have read and agree with the Terms of Use.</label>
+      </span>
+      <button class="login-action btn btn-primary">Register</button>
+      
+    </div> <!-- .actions -->
+  <% end %>
+  </div>
+</div>

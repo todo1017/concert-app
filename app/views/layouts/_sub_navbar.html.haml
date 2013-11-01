@@ -1,0 +1,34 @@
+.subnavbar
+  .subnavbar-inner
+    .container
+      %a.subnav-toggle{"data-target" => ".subnav-collapse", "data-toggle" => "collapse", href: "javascript:;"}
+        %span.sr-only Toggle navigation
+        %i.icon-reorder
+      .collapse.subnav-collapse
+        %ul.mainnav
+          %li{class: active_sub_menu('home')}
+            %a{href: "/"}
+              %i.icon-home
+              %span Home
+          - if user_signed_in? and current_user.has_role? :admin
+            %li{class: active_sub_menu('artists')}
+              %a{href: "/artists"}
+                %i.icon-th
+                %span Artists
+            %li{class: active_sub_menu('events')}
+              %a{href: "/events"}
+                %i.icon-calendar
+                %span Events
+            %li{class: active_sub_menu('settings')}
+              %a{href: "/users"}
+                %i.icon-cog
+                %span Settings
+          - else
+            %li{class: active_sub_menu('schedules')}
+              %a{href: "/schedules"}
+                %i.icon-calendar
+                %span Schedules
+            %li{class: active_sub_menu('artists')}
+              %a{href: "/artists"}
+                %i.icon-th
+                %span Artists

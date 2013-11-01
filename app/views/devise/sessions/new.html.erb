@@ -1,0 +1,57 @@
+<div class="account-container stacked">
+	
+	<div class="content clearfix">
+		
+		<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
+		
+			<h1>Sign In</h1>		
+			
+			<div class="login-fields">
+				
+				<p>Sign in using your registered account:</p>
+
+				<div class="field">
+				  <%= f.input_field :email, :class => "form-control input-lg username-field", placeholder: "Email", :autofocus => true %>
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<%= f.input_field :password, :class => "form-control input-lg password-field",placeholder: "Password" %>
+				</div> <!-- /password -->
+				
+			</div> <!-- /login-fields -->
+			
+			<div class="login-actions">
+				<% if devise_mapping.rememberable? %>				
+				<span class="login-checkbox">
+  				<input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" class="boolean optional field login-checkbox">
+					<label class="choice" for="">Keep me signed in</label>
+				</span>
+				<% end %>
+
+				<button class="login-action btn btn-primary">Sign In</button>
+				
+			</div> <!-- .actions -->
+			
+<!-- 			<div class="login-social">
+				<p>Sign in using social network:</p>
+				
+				<div class="twitter">
+					<a href="#" class="btn_1">Login with Twitter</a>				
+				</div>
+				
+				<div class="fb">
+					<a href="#" class="btn_2">Login with Facebook</a>				
+				</div>
+			</div> -->
+			
+		</form>
+		
+	</div> <!-- /content -->
+	
+</div> <!-- /account-container -->
+
+<% end %>
+<!-- Text Under Box -->
+<div class="login-extra">
+<%= render "devise/shared/links" %>
+</div> <!-- /login-extra -->

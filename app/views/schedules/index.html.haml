@@ -1,0 +1,48 @@
+.widget.stacked
+  .widget-header
+    %h3
+      Events
+  .widget-content.min-height-200
+    .img-thumbnail.col-md-12
+      .row
+        = form_for :schedule, url: schedules_path do |f|
+          .col-md-4.text-right
+            .row
+              %label.col-md-4
+                Artists
+              .col-md-8
+                = select_tag :artist, options_from_collection_for_select(Artist.all, "id", "name"), class: "form-control"
+          .col-md-4.text-right
+            .row
+              %label.col-md-4
+                Event Name
+              .col-md-8
+                %input.form-control
+
+    .table-responsive
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Date
+            %th Show Time
+            %th School
+            %th Artist
+            %th Status
+            %th Contact Sent?
+            %th
+        %tbody
+          - @events.each do |event|
+            %tr
+              %td
+                = event.created_at.to_date
+              %td
+                = event.show_time
+              %td
+                = event.school_name
+              %td
+                = event.artist.name
+              %td
+                = event.status
+              %td
+              %td
+                = link_to "<i class='icon-calendar'></i> Schedule".html_safe, edit_schedule_path(event), class: "btn btn-default btn-sm"

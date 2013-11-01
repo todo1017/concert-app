@@ -1,0 +1,43 @@
+.widget.stacked
+  .widget-header
+    %h3
+      Events
+  .widget-content.min-height-200
+    .img-thumbnail.col-md-12
+      .row
+        .col-md-7.text-right
+          = form_for :event, url: events_path do |f|
+            %label
+              Event Name
+              %input
+        .col-md-5.text-right
+          = link_to "New Event", "#add-event", class: "btn btn-default", data: { toggle: "modal" }
+      = render partial: "events/create"
+    .table-responsive
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Date
+            %th Show Time
+            %th School
+            %th Artist
+            %th Status
+            %th Contact Sent?
+            %th
+        %tbody
+          - @events.each do |event|
+            %tr
+              %td
+                = event.created_at.to_date
+              %td
+                = event.show_time
+              %td
+                = event.school_name
+              %td
+                = event.artist.name
+              %td
+                = event.status
+              %td
+
+              %td
+                = link_to "Remove", event_path(event), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary btn-sm"

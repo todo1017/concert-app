@@ -1,0 +1,45 @@
+class Artist < ActiveRecord::Base
+  attr_accessible :name, :price,
+  	:tech_rider, :contract_rider, :poster, :picture, :w9, :resume
+
+  has_many :events
+  belongs_to :user
+
+
+  has_attached_file :poster, :styles => { :medium => "300x000>", mini: "120x120>", tiny: "50x50" }, 
+    storage: :dropbox,
+    dropbox_credentials: Rails.root.join("config/dropbox.yml"),
+    default_url: "/assets/blank_user.jpg", 
+    path: "upload/:class/:attachment/:style/:filename"
+
+  has_attached_file :picture, :styles => { :medium => "300x000>", mini: "120x120>", tiny: "50x50" }, 
+    storage: :dropbox,
+    dropbox_credentials: Rails.root.join("config/dropbox.yml"),
+    # default_url: "/assets/blank_user.jpg", 
+    path: "upload/:class/:attachment/:style/:filename"
+
+  has_attached_file :tech_rider, 
+  	storage: :dropbox,
+    dropbox_credentials: Rails.root.join("config/dropbox.yml"),
+    path: ":rails_root/public/upload/:class/:attachment/:style/:filename",
+  	url: "/upload/:class/:attachment/:style/:filename"
+
+	has_attached_file :contract_rider, 
+  	storage: :dropbox,
+    dropbox_credentials: Rails.root.join("config/dropbox.yml"),
+    path: ":rails_root/public/upload/:class/:attachment/:style/:filename",
+  	url: "/upload/:class/:attachment/:style/:filename"
+
+  has_attached_file :w9, 
+  	storage: :dropbox,
+    dropbox_credentials: Rails.root.join("config/dropbox.yml"),
+    path: ":rails_root/public/upload/:class/:attachment/:style/:filename",
+  	url: "/upload/:class/:attachment/:style/:filename"
+
+  has_attached_file :resume, 
+  	storage: :dropbox,
+    dropbox_credentials: Rails.root.join("config/dropbox.yml"),
+    path: ":rails_root/public/upload/:class/:attachment/:style/:filename",
+  	url: "/upload/:class/:attachment/:style/:filename"
+
+end

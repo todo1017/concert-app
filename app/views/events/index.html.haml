@@ -1,0 +1,48 @@
+.widget.stacked
+  .widget-header
+    %h3
+      Events
+  .widget-content.min-height-200
+    .img-thumbnail.col-md-12
+      .row
+        = form_for :event, url: events_path do |f|
+          .col-md-3.text-right
+            = select_tag :artist, options_from_collection_for_select(Artist.all, "id", "name"), { :prompt => "Artists", class: "form-control" }
+          .col-md-3.text-right
+            = select_tag :artist, options_for_select(["View All", "View Pasts", "View Upcomings"].map.with_index{|m, i|[m, i]}), { :prompt => "View All Date", class: "form-control" }
+          .col-md-3.text-right
+            %input#event_name.form-control{placeholder: "Event Name"}
+          .col-md-3.text-right
+            = link_to "New Event", "#add-event", class: "btn btn-default", data: { toggle: "modal" }
+      = render partial: "create"
+
+    .table-responsive
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Date
+            %th Show Time
+            %th School
+            %th Artist
+            %th Status
+            %th Contact Sent?
+            %th
+        %tbody
+          - @events.each do |event|
+            %tr
+              %td
+                = event.created_at.to_date
+              %td
+                = event.show_time
+              %td
+                = event.school_name
+              %td
+                = event.artist.name
+              %td
+                = event.status
+              %td
+
+              %td
+                = link_to "<i class='icon-edit'></i> Edit".html_safe, "#event-#{event.id}", class: "btn btn-default btn-sm", data: { toggle: "modal" }
+                = render partial: "modify", locals: {event: event}
+                = link_to "<i class='icon-remove'></i> Remove".html_safe, event_path(event), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default btn-sm"

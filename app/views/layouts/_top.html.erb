@@ -1,0 +1,70 @@
+<nav class="navbar navbar-inverse" role="navigation">
+
+  <div class="container">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <i class="icon-cog"></i>
+    </button>
+    <a class="navbar-brand" href="/">
+      School Concert Scheduling system
+    </a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      
+      <%# if current_user.has_role? :admin %>
+      <% if user_signed_in? %>
+      <li class="dropdown">
+            
+        <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="icon-cog"></i>
+          Settings
+          <b class="caret"></b>
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a href="./account.html">Account Settings</a></li>
+          <li><a href="javascript:;">Privacy Settings</a></li>
+          <li class="divider"></li>
+          <li><a href="javascript:;">Help</a></li>
+        </ul>
+        
+      </li>
+
+      <li class="dropdown">
+              
+        <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="icon-user"></i> 
+          <%= current_user.name %>
+          <b class="caret"></b>
+        </a>
+        
+        <ul class="dropdown-menu">
+          <li><a href="javascript:;">My Profile</a></li>
+          <li class="divider"></li>
+          <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
+        </ul>
+        
+      </li>
+      <% else %>
+      <li>
+        <%= link_to 'Sign in', new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to 'Sign up', new_user_registration_path(:plan => 'supervisor') %>
+      </li>
+      <% end %>
+    </ul>
+    
+<!--     <form class="navbar-form navbar-right" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control input-sm search-query" placeholder="Search">
+      </div>
+    </form> -->
+  </div><!-- /.navbar-collapse -->
+</div> <!-- /.container -->
+</nav>

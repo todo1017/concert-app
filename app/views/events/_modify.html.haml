@@ -1,0 +1,27 @@
+.modal.fade{ role: "dialog", id: "event-" + event.id.to_s }
+  = simple_form_for event, url: events_path, :html => {:method => :put, :class => 'form-horizontal' } do |f|
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %a.close{"data-dismiss" => "modal"} ×
+          %h4 Add Event
+        .modal-body
+          .form-group
+            = f.label :artist_id, "Artist", class: "col-sm-3"
+            .col-sm-8
+              = f.input_field :artist_id, collection: Artist.all, class: "form-control"
+          .form-group
+            = f.label :school_name, "School Name", class: "col-sm-3"
+            .col-sm-8
+              = f.input_field :school_name, class: "form-control"
+          .form-group
+            = f.label :school_email, "School Email", class: "col-sm-3"
+            .col-sm-8
+              = f.email_field :school_email, collection: @supervisors, class: "form-control"
+          .form-group
+            = f.label :status, "Status", class: "col-sm-3"
+            .col-sm-8
+              = f.input_field :status, collection: Event::STATUS, class: "form-control"
+        .modal-footer
+          = f.submit "Create", :class => "btn btn-primary"
+          %a.btn.btn-default{"data-dismiss" => "modal", href: "#"} Cancel
