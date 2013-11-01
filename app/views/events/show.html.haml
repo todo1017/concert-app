@@ -1,0 +1,60 @@
+.widget.stacked
+  .widget-header
+    %h3
+      Event Detail
+  .widget-content
+    .clearfix{style: "line-height: 32px;"}
+      .col-md-6.col-sm-12
+        .col-sm-4
+          %strong Show Time
+        .col-sm-8
+          = @event.show_time
+      
+        .col-sm-4
+          %strong Time Zone
+        .col-sm-8
+          = @event.time_zone
+
+        .col-sm-4
+          %strong Load In Time
+        .col-sm-8
+          = @event.load_time
+
+        .col-sm-4
+          %strong Load In Address
+        .col-sm-8
+          = @event.load_address
+      
+        .col-sm-4
+          %strong Contact Name
+        .col-sm-8
+          = @event.contact_name
+      
+        .col-sm-4
+          %strong Contact Phone No
+        .col-sm-8
+          = @event.contact_phone
+      .col-md-6.col-sm-12
+        
+        .col-sm-4
+          %strong Hotel Name
+        .col-sm-8
+          = @event.hotel_name
+      
+        .col-sm-4
+          %strong Hotel Address
+        .col-sm-8
+          = @event.hotel_address
+      
+        .col-sm-4
+          %strong Backup Content
+        .col-sm-8
+          = @event.backup_content
+      
+        .col-sm-4
+          %strong Backup Phone No
+        .col-sm-8
+          = @event.backup_phone
+
+    .col-md-12.text-right
+      %a.btn.btn-default{onclick: "history.back();"} Back

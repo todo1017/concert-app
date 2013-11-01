@@ -20,6 +20,7 @@
       %table.table.table-striped.table-bordered
         %thead
           %tr
+            %th #
             %th Date
             %th Show Time
             %th School
@@ -31,6 +32,8 @@
           - @events.each do |event|
             %tr
               %td
+                = link_to event.id, event_path(event)
+              %td
                 = event.created_at.to_date
               %td
                 = event.show_time
@@ -41,9 +44,9 @@
               %td
                 = event.status
               %td
-
+                Sent
               %td
                 = link_to "<i class='icon-edit'></i> Edit".html_safe, "#event-#{event.id}", class: "btn btn-default btn-sm", data: { toggle: "modal" }
                 = render partial: "modify", locals: {event: event}
                 = link_to "<i class='icon-remove'></i> Remove".html_safe, event_path(event), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default btn-sm"
-      = will_paginate @artists, previous_label: "&laquo;", next_label: "&raquo;"
+      = will_paginate @events, previous_label: "&laquo;", next_label: "&raquo;"

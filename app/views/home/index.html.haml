@@ -5,28 +5,34 @@
   .widget-content.min-height-200
     .img-thumbnail.col-md-12
       .row
-        .col-md-7.text-right
-          = form_for :event, url: events_path do |f|
-            %label
-              Event Name
-              %input
-        .col-md-5.text-right
-          = link_to "New Event", "#add-event", class: "btn btn-default", data: { toggle: "modal" }
-      = render partial: "events/create"
+        = form_for :event, url: events_path do |f|
+          .col-md-4.text-right
+            = select_tag :artist, options_from_collection_for_select(Artist.all, "id", "name"), { :prompt => "Artists", class: "form-control" }
+          .col-md-4.text-right
+            = select_tag :artist, options_for_select(["View All", "View Pasts", "View Upcomings"].map.with_index{|m, i|[m, i]}), { :prompt => "View All Date", class: "form-control" }
+          .col-md-4.text-right.inline
+            .input-group
+              %input.form-control{type: "text", placeholder: "Event Name"}
+              %span.input-group-btn
+                %button.btn.btn-default{type: "button"} Search
+
+
     .table-responsive
       %table.table.table-striped.table-bordered
         %thead
           %tr
+            %th #
             %th Date
             %th Show Time
             %th School
             %th Artist
             %th Status
             %th Contact Sent?
-            %th
         %tbody
           - @events.each do |event|
             %tr
+              %td
+                = link_to event.id, event_path(event)
               %td
                 = event.created_at.to_date
               %td
@@ -39,5 +45,4 @@
                 = event.status
               %td
 
-              %td
-                = link_to "Remove", event_path(event), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary btn-sm"
+      = will_paginate @events, previous_label: "&laquo;", next_label: "&raquo;"
