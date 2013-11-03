@@ -3,17 +3,19 @@
     %h3
       Events
   .widget-content.min-height-200
-    .img-thumbnail.col-md-12
+    .img-thumbnail.col-xs-12
       .row
-        = form_for :event, url: events_path do |f|
-          .col-md-3.text-right
-            = select_tag :artist, options_from_collection_for_select(Artist.all, "id", "name"), { :prompt => "Artists", class: "form-control" }
-          .col-md-3.text-right
-            = select_tag :artist, options_for_select(["View All", "View Pasts", "View Upcomings"].map.with_index{|m, i|[m, i]}), { :prompt => "View All Date", class: "form-control" }
-          .col-md-3.text-right
-            %input#event_name.form-control{placeholder: "Event Name"}
-          .col-md-3.text-right
-            = link_to "New Event", "#add-event", class: "btn btn-default", data: { toggle: "modal" }
+        = form_for :query, url: events_path, html: { method: :get } do |f|
+          .col-xs-8
+            .col-xs-4.text-right
+              = select_tag :artist, options_from_collection_for_select(@artists, "id", "name"), { :prompt => "View All", class: "form-control" }
+            .col-xs-4.text-right
+              = select_tag :date, options_for_select(["View Pasts", "View Upcomings"].map.with_index{|m, i|[m, i]}), { :prompt => "View All", class: "form-control" }
+            .col-xs-4
+              %button.btn.btn-default{type: "submit"} Search
+          .col-xs-4.text-right.inline
+            = link_to "Create", "#add-event", class: "btn btn-primary", data: { toggle: "modal" }
+            
       = render partial: "create"
 
     .table-responsive
@@ -27,7 +29,7 @@
             %th Artist
             %th Status
             %th Contact Sent?
-            %th
+            %th.action-field
         %tbody
           - @events.each do |event|
             %tr
@@ -46,7 +48,7 @@
               %td
                 Sent
               %td
-                = link_to "<i class='icon-edit'></i> Edit".html_safe, "#event-#{event.id}", class: "btn btn-default btn-sm", data: { toggle: "modal" }
+                = link_to "<i class='icon-edit'></i> Edit".html_safe, "#event-#{event.id}", class: "btn btn-default btn-xs", data: { toggle: "modal" }
                 = render partial: "modify", locals: {event: event}
-                = link_to "<i class='icon-remove'></i> Remove".html_safe, event_path(event), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default btn-sm"
+                = link_to "<i class='icon-remove'></i> Remove".html_safe, event_path(event), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default btn-xs"
       = will_paginate @events, previous_label: "&laquo;", next_label: "&raquo;"

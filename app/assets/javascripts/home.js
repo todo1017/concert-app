@@ -2,7 +2,7 @@ $(function()
 {
 	$.mask.definitions['~']='[+-]';
   $('.input-phone').mask('(999) 999-9999')
-  $('.timepicker').mask('29:59');
+  $('.timepicker').mask('99:99');
   
   $(".timepicker").timepicker({
     minuteStep: 1,

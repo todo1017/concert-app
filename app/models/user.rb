@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon
 
-  has_many :events, as: :provider # provider is school contact user
-  
+  has_many  :events, as: :provider # provider is school contact user
+  has_many  :artists
   scope :supervisor , joins(:roles).where("roles.name = 'supervisor'")
 
   def name

@@ -120,3 +120,7 @@ html, body
 	width: 150px;
 	height: 150px;
 }
+
+.action-field {
+	width: 200px;
+}

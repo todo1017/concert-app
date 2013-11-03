@@ -7,7 +7,7 @@ class CreateEvents < ActiveRecord::Migration
         t.integer    :provider_id
     	t.string 	 :provider_type
         t.string     :performance_date
-    	t.string	 :performance_time
+    	t.datetime	 :performance_time
     	t.string	 :school_name
     	t.string	 :school_email
     	t.string 	 :status

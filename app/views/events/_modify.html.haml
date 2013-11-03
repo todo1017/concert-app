@@ -4,12 +4,16 @@
       .modal-content
         .modal-header
           %a.close{"data-dismiss" => "modal"} ×
-          %h4 Add Event
+          %h4 Edit Event
         .modal-body
           .form-group
             = f.label :artist_id, "Artist", class: "col-sm-3"
             .col-sm-8
-              = f.input_field :artist_id, collection: Artist.all, class: "form-control"
+              = f.input_field :artist_id, collection: current_user.artists, class: "form-control"
+          .form-group
+            = f.label :performance_date, "Performance Date", class: "col-sm-3"
+            .col-sm-8
+              = f.input_field :performance_date, class: "form-control date-picker"
           .form-group
             = f.label :school_name, "School Name", class: "col-sm-3"
             .col-sm-8

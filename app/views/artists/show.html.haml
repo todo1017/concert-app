@@ -1,0 +1,83 @@
+.widget.stacked
+  .widget-header
+    %h3
+      Event Detail
+  .widget-content
+    .clearfix{style: "line-height: 32px;"}
+      .col-md-6.col-sm-12
+        .col-sm-4
+          %strong Name
+        .col-sm-8
+          = @artist.name
+      
+        .col-sm-4
+          %strong Price
+        .col-sm-8
+          = @artist.price
+
+        .col-sm-4
+          %strong Picture
+        .col-sm-8
+          = image_tag @artist.picture.url(:medium), class: "img-thumbnail"
+
+        .col-sm-4
+          %strong Poster
+        .col-sm-8
+          = image_tag @artist.poster.url(:medium), class: "img-thumbnail"
+
+      .col-md-6.col-sm-12
+
+        .col-sm-4
+          %strong Tech Rider
+        .col-sm-8
+          = link_to @artist.tech_rider_file_name, @artist.tech_rider.url
+
+        .col-sm-4
+          %strong Contract Rider
+        .col-sm-8
+          = link_to @artist.contract_rider_file_name, @artist.contract_rider.url
+
+        .col-sm-4
+          %strong W9
+        .col-sm-8
+          = link_to @artist.w9_file_name, @artist.w9.url
+
+        .col-sm-4
+          %strong Resume
+        .col-sm-8
+          = @artist.resume
+    %hr
+    %h4 Events
+    .table-responsive
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th #
+            %th Date
+            %th Show Time
+            %th School
+            %th Artist
+            %th Status
+            %th Contact Sent?
+        %tbody
+          - @events.each do |event|
+            %tr
+              %td
+                = link_to event.id, event_path(event)
+              %td
+                = event.created_at.to_date
+              %td
+                = event.show_time
+              %td
+                = event.school_name
+              %td
+                = event.artist.name
+              %td
+                = event.status
+              %td
+
+      = will_paginate @events, previous_label: "&laquo;", next_label: "&raquo;"
+
+
+    .col-md-12.text-right
+      %a.btn.btn-default{onclick: "history.back();"} Back

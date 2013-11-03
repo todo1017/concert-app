@@ -5,16 +5,13 @@
   .widget-content.min-height-200
     .img-thumbnail.col-md-12
       .row
-        = form_for :event, url: events_path do |f|
-          .col-md-4.text-right
-            = select_tag :artist, options_from_collection_for_select(Artist.all, "id", "name"), { :prompt => "Artists", class: "form-control" }
-          .col-md-4.text-right
-            = select_tag :artist, options_for_select(["View All", "View Pasts", "View Upcomings"].map.with_index{|m, i|[m, i]}), { :prompt => "View All Date", class: "form-control" }
-          .col-md-4.text-right.inline
-            .input-group
-              %input.form-control{type: "text", placeholder: "Event Name"}
-              %span.input-group-btn
-                %button.btn.btn-default{type: "button"} Search
+        = form_for :event, url: events_path, html: { method: :get } do |f|
+          .col-md-3.text-right
+            = select_tag :artist, options_from_collection_for_select(@artists, "id", "name"), { :prompt => "Artists", class: "form-control" }
+          .col-md-3.text-right
+            = select_tag :date, options_for_select(["View All", "View Pasts", "View Upcomings"].map.with_index{|m, i|[m, i]}), { :prompt => "View All Date", class: "form-control" }
+          .col-md-6.text-right.inline
+            %button.btn.btn-default{type: "submit"} Search
 
 
     .table-responsive

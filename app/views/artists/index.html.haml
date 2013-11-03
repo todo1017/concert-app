@@ -5,12 +5,12 @@
   .widget-content.min-height-200
     .img-thumbnail.col-md-12
       .col-md-6.text-right.pull-right
-        = form_for :event, url: artists_path, html: { class: "form-inline" } do |f|
+        = form_for :event, url: artists_path, html: { method: :get, class: "form-inline" } do |f|
           .col-md-6
             .input-group
               %input.form-control{type: "text", placeholder: "Artist Name"}
               %span.input-group-btn
-                %button.btn.btn-default{type: "button"} Search
+                %button.btn.btn-default{type: "submit"} Search
           .col-md-6
             = link_to "New Artist", "#add-artist", class: "btn btn-primary", data: { toggle: "modal" }
       = render partial: "create"
@@ -19,18 +19,24 @@
       %table.table.table-striped.table-bordered
         %thead
           %tr
+            %th #
             %th Name
             %th Pricing
             %th Registered Date
-            %th
+            %th.action-field
         %tbody
           - @artists.each do |artist|
             %tr
+              %td
+                = link_to artist.id, artist_path(artist)
               %td
                 = artist.name
               %td
                 = artist.price
               %td
                 = artist.created_at.to_date
-              %td= link_to "Remove", "#", class: "btn btn-default btn-sm"
+              %td
+                = link_to "<i class='icon-edit'></i> Edit".html_safe, "#artist-#{artist.id}", class: "btn btn-default btn-sm", data: { toggle: "modal" }
+                = render partial: "modify", locals: {artist: artist}
+                = link_to "<i class='icon-remove'></i> Remove".html_safe, artist_path(artist), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default btn-sm"
       = will_paginate @artists, previous_label: "&laquo;", next_label: "&raquo;"

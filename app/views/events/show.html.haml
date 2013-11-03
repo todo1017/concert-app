@@ -6,6 +6,21 @@
     .clearfix{style: "line-height: 32px;"}
       .col-md-6.col-sm-12
         .col-sm-4
+          %strong Performance Date
+        .col-sm-8
+          = @event.performance_time.strftime("%c")
+
+        .col-sm-4
+          %strong School Name
+        .col-sm-8
+          = @event.school_name
+
+        .col-sm-4
+          %strong School Email
+        .col-sm-8
+          = @event.school_email
+
+        .col-sm-4
           %strong Show Time
         .col-sm-8
           = @event.show_time
@@ -25,6 +40,7 @@
         .col-sm-8
           = @event.load_address
       
+      .col-md-6.col-sm-12
         .col-sm-4
           %strong Contact Name
         .col-sm-8
@@ -34,7 +50,6 @@
           %strong Contact Phone No
         .col-sm-8
           = @event.contact_phone
-      .col-md-6.col-sm-12
         
         .col-sm-4
           %strong Hotel Name

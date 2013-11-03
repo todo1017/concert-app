@@ -6,6 +6,8 @@ class ArtistsController < ApplicationController
 	end
 
 	def show
+		@artist = Artist.find(params[:id])
+		@events = @artist.events.paginate(page: params[:page], per_page: 10)
 	end
 
 	def edit
@@ -18,7 +20,7 @@ class ArtistsController < ApplicationController
 
 	def create
 		artist = Artist.new(params[:artist])
-
+		artist.user_id = current_user.id
     if artist.save
       redirect_to(artists_path, notice: "New artist is successfully created.")
     else
@@ -29,18 +31,18 @@ class ArtistsController < ApplicationController
 	def destroy
 		artist = Artist.find(params[:id])
 		if artist.destroy
-			redirect_to(groups_path, notice: "The Artist is deleted successfully")
+			redirect_to(artists_path, notice: "The Artist is deleted successfully")
 		else
-			redirect_to(groups_path, notice: "Failed to delete the artist")
+			redirect_to(artists_path, notice: "Failed to delete the artist")
 		end
 	end
 
 	def update
 		event = Event.find(params[:event])
 		if event.update_attribute_params(params[:event])
-			redirect_to(groups_path, notice: "The event is updated successfully")
+			redirect_to(artists_path, notice: "The event is updated successfully")
 		else
-			redirect_to(groups_path, notice: "Failed to update the event")
+			redirect_to(artists_path, notice: "Failed to update the event")
 		end
 	end
 end
