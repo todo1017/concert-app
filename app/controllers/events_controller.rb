@@ -43,6 +43,7 @@ class EventsController < ApplicationController
 		event = Event.new(params[:event])
 
     if event.save
+    	EventMailer.event_created(event)
       redirect_to(events_path, notice: "New event is successfully created.")
     else
       redirect_to(events_path, notice: "Failed to create new event.")
