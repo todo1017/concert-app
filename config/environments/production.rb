@@ -61,7 +61,7 @@ ConcertApp::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = { :host => 'ConcertApp.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'concert-app.herokuapp.com' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
@@ -74,8 +74,8 @@ ConcertApp::Application.configure do
     :port      => 587,
     :authentication => "plain",
     :enable_starttls_auto => true,
-    :user_name => ENV["MANDRILL_USERNAME"],
-    :password  => ENV["MANDRILL_API_KEY"]
+    :user_name => "admin@concert.com",
+    :password  => "OxCDUBFypPPbu9f-16h-Yw"
   }
 
 
