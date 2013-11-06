@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
 	
 	def index
-		if params[:artist].nil?
+		if params[:artist].nil? || params[:artist] == ""
 			@events = Event.where({school_email: current_user.email})
 						.paginate(page: params[:page], per_page: 10)
 		else

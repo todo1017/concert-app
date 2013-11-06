@@ -13,7 +13,6 @@ $(function()
   $('.date-picker').datepicker({ format: 'yyyy-mm-dd' });
 
   $('.tooltip').on("click", function(){
-  	console.log("hey");
   	$(this).tooltip('show');
   });
 

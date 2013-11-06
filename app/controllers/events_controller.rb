@@ -36,12 +36,13 @@ class EventsController < ApplicationController
 	end
 
 	def new
-		@event = Event.find(params[:id])
+		@event = Event.new
 	end
 
 	def create
 		event = Event.new(params[:event])
-
+		event.performance_time = Date.parse(event.performance_date)
+		
     if event.save
     	EventMailer.event_created(event)
       redirect_to(events_path, notice: "New event is successfully created.")

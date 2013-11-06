@@ -5,71 +5,84 @@
   .widget-content
     .clearfix{style: "line-height: 32px;"}
       .col-md-6.col-sm-12
-        .col-sm-4
-          %strong Performance Date
-        .col-sm-8
-          = @event.performance_time.strftime("%c")
+        .row
+          .col-sm-4
+            %strong Performance Date
+          .col-sm-8
+            = @event.performance_time.nil? ? @event.performance_date : @event.performance_time.strftime("%c")
 
-        .col-sm-4
-          %strong School Name
-        .col-sm-8
-          = @event.school_name
+        .row
+          .col-sm-4
+            %strong School Name
+          .col-sm-8
+            = @event.school_name
 
-        .col-sm-4
-          %strong School Email
-        .col-sm-8
-          = @event.school_email
+        .row
+          .col-sm-4
+            %strong School Email
+          .col-sm-8
+            = @event.school_email
 
-        .col-sm-4
-          %strong Show Time
-        .col-sm-8
-          = @event.show_time
+        .row
+          .col-sm-4
+            %strong Show Time
+          .col-sm-8
+            = @event.show_time
       
-        .col-sm-4
-          %strong Time Zone
-        .col-sm-8
-          = @event.time_zone
+        .row
+          .col-sm-4
+            %strong Time Zone
+          .col-sm-8
+            = @event.time_zone
 
-        .col-sm-4
-          %strong Load In Time
-        .col-sm-8
-          = @event.load_time
+        .row
+          .col-sm-4
+            %strong Load In Time
+          .col-sm-8
+            = @event.load_time
 
-        .col-sm-4
-          %strong Load In Address
-        .col-sm-8
-          = @event.load_address
+        .row
+          .col-sm-4
+            %strong Load In Address
+          .col-sm-8
+            = @event.load_address
       
       .col-md-6.col-sm-12
-        .col-sm-4
-          %strong Contact Name
-        .col-sm-8
-          = @event.contact_name
+        .row
+          .col-sm-4
+            %strong Contact Name
+          .col-sm-8
+            = @event.contact_name
       
-        .col-sm-4
-          %strong Contact Phone No
-        .col-sm-8
-          = @event.contact_phone
+        .row
+          .col-sm-4
+            %strong Contact Phone No
+          .col-sm-8
+            = @event.contact_phone
         
-        .col-sm-4
-          %strong Hotel Name
-        .col-sm-8
-          = @event.hotel_name
+        .row
+          .col-sm-4
+            %strong Hotel Name
+          .col-sm-8
+            = @event.hotel_name
       
-        .col-sm-4
-          %strong Hotel Address
-        .col-sm-8
-          = @event.hotel_address
+        .row
+          .col-sm-4
+            %strong Hotel Address
+          .col-sm-8
+            = @event.hotel_address
       
-        .col-sm-4
-          %strong Backup Content
-        .col-sm-8
-          = @event.backup_content
+        .row
+          .col-sm-4
+            %strong Backup Content
+          .col-sm-8
+            = @event.backup_content
       
-        .col-sm-4
-          %strong Backup Phone No
-        .col-sm-8
-          = @event.backup_phone
+        .row
+          .col-sm-4
+            %strong Backup Phone No
+          .col-sm-8
+            = @event.backup_phone
 
     .col-md-12.text-right
       %a.btn.btn-default{onclick: "history.back();"} Back

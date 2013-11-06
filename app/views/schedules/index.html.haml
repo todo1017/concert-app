@@ -4,15 +4,15 @@
       Events
   .widget-content.min-height-200
     .img-thumbnail.col-xs-12
-      = form_for :schedule, url: schedules_path, html: {class: "form-inline"} do |f|
+      = form_for :schedule, url: schedules_path, html: { method: :get, class: "form-inline"} do |f|
         .row
-          .col-xs-12.col-sm-6.pull-right
+          .col-xs-12.col-sm-8.pull-right
             .col-xs-4.text-right{style: "margin-top: 5px;"}
               = label_tag :artist, "Artist"
             .col-xs-4
-              = select_tag :artist, options_from_collection_for_select(Artist.all, "id", "name"), { :prompt => "Artists", class: "form-control" }
+              = select_tag :artist, options_from_collection_for_select(Artist.all, "id", "name", params[:artist]), { :prompt => "View All", class: "form-control" }
             .col-xs-4
-              %button.btn.btn-default{type: "button"} Search
+              %button.btn.btn-default{type: "submit"} Search
 
     .table-responsive
       %table.table.table-striped.table-bordered

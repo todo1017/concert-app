@@ -5,6 +5,7 @@ class Artist < ActiveRecord::Base
   has_many :events
   belongs_to :user
 
+  scope :by_name, ->(name){ where("name like '%#{name}%'") }
 
   has_attached_file :poster, :styles => { :medium => "300x300>", mini: "120x120>", tiny: "50x50" }, 
     storage: :dropbox,

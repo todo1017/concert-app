@@ -2,7 +2,11 @@ class ArtistsController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@artists = Artist.paginate(page: params[:page], per_page: 10)
+		if params[:query].nil?
+			@artists = Artist.paginate(page: params[:page], per_page: 10)
+		else
+			@artists = Artist.by_name(params[:query]).paginate(page: params[:page], per_page: 10)
+		end
 	end
 
 	def show
@@ -15,7 +19,7 @@ class ArtistsController < ApplicationController
 	end
 
 	def new
-		@artist = Artist.find(params[:id])
+		@artist = Artist.new
 	end
 
 	def create
