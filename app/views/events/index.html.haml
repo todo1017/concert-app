@@ -34,7 +34,7 @@
           - @events.each do |event|
             %tr
               %td
-                = link_to event.id, event_path(event)
+                = link_to "View Detail", event_path(event)
               %td
                 = event.created_at.to_date
               %td
@@ -42,11 +42,14 @@
               %td
                 = event.school_name
               %td
-                = event.artist.name
+                = link_to event.artist.name, artist_path(event.artist)
               %td
                 = event.status
               %td
-                Sent
+                - if event.artist.contract_rider_file_name.nil?
+                  = link_to "Sent", event.artist.contract_rider.url
+                - else
+                  Not Sent
               %td
                 = link_to "<i class='icon-edit'></i> Edit".html_safe, "#event-#{event.id}", class: "btn btn-default btn-sm", data: { toggle: "modal" }
                 = render partial: "modify", locals: {event: event}

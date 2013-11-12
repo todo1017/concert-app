@@ -16,7 +16,10 @@
 //= require_directory ./plugins
 //= require_directory ./date-time
 //= require_directory ./demo
-//= require_tree
+//= require artists
+//= require events
+//= require home
+//= require schedules
 //= require_self
 
 
@@ -37,15 +40,11 @@ var Application = function () {
 	function init () {
 		
 		enableBackToTop ();
-		enableLightbox ();
-		enableCirque ();
-		enableEnhancedAccordion ();
 
 
 		$('.ui-tooltip').tooltip();
-	    $('.ui-popover').popover();
+	  $('.ui-popover').popover();
     
-    $('form').validate();
 
 	}
 
@@ -106,13 +105,16 @@ var Application = function () {
 			errorElement: 'span',
 			
 			highlight: function(element) {
+				console.log("highlight");
 				$(element).parents ('.form-group').removeClass ('success').addClass('error');
 			},
 			success: function(element) {
+				console.log("success");
 				$(element).parents ('.form-group').removeClass ('error').addClass('success');
 				$(element).parents ('.form-group:not(:has(.clean))').find ('div:last').before ('<div class="clean"></div>');
 			},
 			errorPlacement: function(error, element) {
+				console.log("error");
 				error.prependTo(element.parents ('.form-group'));
 			}
 	    	

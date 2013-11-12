@@ -61,8 +61,8 @@ class EventsController < ApplicationController
 	end
 
 	def update
-		event = Event.find(params[:event])
-		if event.update_attribute_params(params[:event])
+		event = Event.find(params[:id])
+		if event.update_attributes(params[:event])
 			redirect_to(events_path, notice: "The event is updated successfully")
 		else
 			redirect_to(events_path, notice: "Failed to update the event")

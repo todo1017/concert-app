@@ -42,9 +42,9 @@ class ArtistsController < ApplicationController
 	end
 
 	def update
-		event = Event.find(params[:event])
-		if event.update_attribute_params(params[:event])
-			redirect_to(artists_path, notice: "The event is updated successfully")
+		artist = Artist.find(params[:id])
+		if artist.update_attributes(params[:artist])
+			redirect_to(artists_path, notice: "Your artist is updated successfully")
 		else
 			redirect_to(artists_path, notice: "Failed to update the event")
 		end

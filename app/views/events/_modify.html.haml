@@ -1,5 +1,5 @@
 .modal.fade{ role: "dialog", id: "event-" + event.id.to_s }
-  = simple_form_for event, url: events_path, :html => {:method => :put, :class => 'form-horizontal' } do |f|
+  = simple_form_for event, url: event_path(event), :html => {:method => :put, :class => 'form-horizontal' } do |f|
     .modal-dialog
       .modal-content
         .modal-header
@@ -27,5 +27,5 @@
             .col-sm-8
               = f.input_field :status, collection: Event::STATUS, class: "form-control"
         .modal-footer
-          = f.submit "Create", :class => "btn btn-primary"
+          = f.submit "Update", :class => "btn btn-primary"
           %a.btn.btn-default{"data-dismiss" => "modal", href: "#"} Cancel

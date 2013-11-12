@@ -1,5 +1,5 @@
 .modal.fade{ role: "dialog", id: "artist-" + artist.id.to_s }
-  = simple_form_for artist, url: artists_path, :html => {:method => :put, :multipart => true, :class => 'form-horizontal' } do |f|
+  = simple_form_for artist, url: artist_path(artist), :html => {:method => :put, :multipart => true, :class => 'form-horizontal' } do |f|
     .modal-dialog
       .modal-content
         .modal-header
@@ -10,6 +10,10 @@
             = f.label :name, class: "col-sm-3"
             .col-sm-8
               = f.input_field :name, class: "form-control"
+          .form-group
+            = f.label :email, class: "col-sm-3"
+            .col-sm-8
+              = f.input_field :email, class: "form-control"
           .form-group
             = f.label :price, class: "col-sm-3"
             .col-sm-8
@@ -43,5 +47,5 @@
               = f.file_field :resume, class: "form-control"
 
         .modal-footer
-          = f.submit "Create", :class => "btn btn-primary"
+          = f.submit "Update", :class => "btn btn-primary"
           %a.btn.btn-default{"data-dismiss" => "modal", href: "#"} Cancel

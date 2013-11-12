@@ -124,3 +124,7 @@ html, body
 .action-field {
 	width: 200px;
 }
+
+.datepicker {
+	z-index: 1050 !important;
+}

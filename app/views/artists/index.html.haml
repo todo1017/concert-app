@@ -19,8 +19,8 @@
       %table.table.table-striped.table-bordered
         %thead
           %tr
-            %th #
             %th Name
+            %th Email
             %th Pricing
             %th Registered Date
             %th.action-field
@@ -28,9 +28,9 @@
           - @artists.each do |artist|
             %tr
               %td
-                = link_to artist.id, artist_path(artist)
+                = link_to artist.name, artist_path(artist)
               %td
-                = artist.name
+                = artist.email
               %td
                 $
                 = artist.price

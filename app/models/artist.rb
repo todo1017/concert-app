@@ -1,5 +1,5 @@
 class Artist < ActiveRecord::Base
-  attr_accessible :name, :price,
+  attr_accessible :name, :email, :price,
   	:tech_rider, :contract_rider, :poster, :picture, :w9, :resume
 
   has_many :events
