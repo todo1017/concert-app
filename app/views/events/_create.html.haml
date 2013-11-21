@@ -23,6 +23,10 @@
             .col-sm-8
               = f.email_field :school_email, collection: @supervisors, class: "form-control"
           .form-group
+            = f.label :contract, "Contract", class: "col-sm-3"
+            .col-sm-8
+              = f.file_field :contract, class: "form-control"
+          .form-group
             = f.label :status, "Status", class: "col-sm-3"
             .col-sm-8
               = f.input_field :status, collection: Event::STATUS, class: "form-control"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131112184427) do
+ActiveRecord::Schema.define(:version => 20131119024908) do
 
   create_table "artists", :force => true do |t|
     t.integer  "user_id"
@@ -65,8 +65,12 @@ ActiveRecord::Schema.define(:version => 20131112184427) do
     t.boolean  "contract_signed"
     t.boolean  "payment_sent"
     t.boolean  "show_review_complete"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "contract_file_name"
+    t.string   "contract_content_type"
+    t.integer  "contract_file_size"
+    t.datetime "contract_updated_at"
   end
 
   create_table "roles", :force => true do |t|

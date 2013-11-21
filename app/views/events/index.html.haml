@@ -46,10 +46,10 @@
               %td
                 = event.status
               %td
-                - if event.artist.contract_rider_file_name.nil?
-                  = link_to "Sent", event.artist.contract_rider.url
-                - else
+                - if event.contract_file_name.nil?
                   Not Sent
+                - else
+                  = link_to "Sent", event.contract.url
               %td
                 = link_to "<i class='icon-edit'></i> Edit".html_safe, "#event-#{event.id}", class: "btn btn-default btn-sm", data: { toggle: "modal" }
                 = render partial: "modify", locals: {event: event}

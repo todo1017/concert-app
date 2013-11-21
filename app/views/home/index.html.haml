@@ -41,5 +41,9 @@
               %td
                 = event.status
               %td
+                - if event.contract_file_name.nil?
+                  Not Sent
+                - else
+                  = link_to "Sent", event.contract.url
 
       = will_paginate @events, previous_label: "&laquo;", next_label: "&raquo;"

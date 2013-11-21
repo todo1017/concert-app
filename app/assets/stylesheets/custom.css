@@ -128,3 +128,7 @@ html, body
 .datepicker {
 	z-index: 1050 !important;
 }
+
+input[type="checkbox"] {
+	height: 20px;
+}

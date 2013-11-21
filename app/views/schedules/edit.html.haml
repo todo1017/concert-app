@@ -8,8 +8,10 @@
         .col-md-4.col-sm-12
           .form-group
             = f.label :show_time, "Show Time", class: "col-sm-4"
-            .col-sm-8
+            .input-group.bootstrap-timepicker.col-sm-8.input-append
               = f.input_field :show_time, class: "form-control timepicker"
+              %span.input-group-addon.add-on
+                %i.icon-time
           .form-group
             = f.label :time_zone, "Time Zone", class: "col-sm-4"
             .col-sm-8
@@ -17,8 +19,10 @@
 
           .form-group
             = f.label :load_time, "Load In Time", class: "col-sm-4"
-            .col-sm-8
+            .input-group.bootstrap-timepicker.col-sm-8.input-append
               = f.input_field :load_time, class: "form-control timepicker"
+              %span.input-group-addon.add-on
+                %i.icon-time
           
           .form-group
             = f.label :load_address, "Load In Address", class: "col-sm-4"
@@ -54,15 +58,15 @@
         .col-md-4.col-sm-12
           .checkbox
             %label
-              = f.input_field :contract_signed, class: "form-control"
+              = f.input_field :contract_signed, label: false
               Contract Signed
           .checkbox
             %label
-              = f.input_field :payment_sent, class: "form-control"
+              = f.input_field :payment_sent
               Payment Sent
           .checkbox
             %label
-              = f.input_field :show_review_complete, class: "form-control"
+              = f.input_field :show_review_complete, label: false
               Show Review Complete
       .col-md-12.text-right
         = f.submit "Update", :class => "btn btn-primary"

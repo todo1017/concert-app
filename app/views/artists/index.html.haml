@@ -8,7 +8,7 @@
         = form_for :artist, url: artists_path, html: { method: :get, class: "form-inline" } do |f|
           .col-md-6
             .input-group
-              %input.form-control.timepicker{name: "query", value: "#{params[:query]}", type: "text", placeholder: "Artist Name"}
+              %input.form-control{name: "query", value: "#{params[:query]}", type: "text", placeholder: "Artist Name"}
               %span.input-group-btn
                 %button.btn.btn-default{type: "submit"} Search
           .col-md-6

@@ -5,13 +5,13 @@ $(function(){
 	$.mask.definitions['~']='[+-]';
   $('.input-phone').mask('(999) 999-9999')
   $('.timepicker').mask('99:99');
-  // $('.date-picker').mask('9999-99-99');
+  $('.date-picker').mask('9999-99-99');
   
-  // $(".timepicker").timepicker({
-  //   minuteStep: 1,
-  //   showSeconds: false,
-  //   showMeridian: false
-  // });
+  $(".timepicker").timepicker({
+    minuteStep: 1,
+    showSeconds: false,
+    showMeridian: false
+  });
 
 	if ($('.date-picker').length > 0)
   	$('.date-picker').datepicker({ format: 'yyyy-mm-dd' });
