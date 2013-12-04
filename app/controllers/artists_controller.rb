@@ -2,6 +2,7 @@ class ArtistsController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
+		@artist = Artist.new
 		if params[:query].nil?
 			@artists = Artist.paginate(page: params[:page], per_page: 10)
 		else

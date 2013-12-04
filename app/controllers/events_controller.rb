@@ -44,7 +44,7 @@ class EventsController < ApplicationController
 		event.performance_time = Date.parse(event.performance_date)
 		
     if event.save
-    	EventMailer.event_created(event)
+    	EventMailer.event_created(event).deliver
       redirect_to(events_path, notice: "New event is successfully created.")
     else
       redirect_to(events_path, notice: "Failed to create new event.")

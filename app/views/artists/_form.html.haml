@@ -1,0 +1,38 @@
+.form-group
+  = f.label :name, class: "col-sm-3"
+  .col-sm-8
+    = f.input_field :name, class: "form-control"
+.form-group
+  = f.label :email, class: "col-sm-3"
+  .col-sm-8
+    = f.input_field :email, class: "form-control"
+.form-group
+  = f.label :price, class: "col-sm-3"
+  .col-sm-8
+    = f.input_field :price, class: "form-control"
+
+.form-group
+  = f.label :picture, "Picture / Poster", class: "col-sm-3 text-right"
+  .col-sm-4
+    = image_tag f.object.picture.url, class: "img-thumbnail img-picture"
+    = f.file_field :picture, class: "form-control hide file-picture"
+  .col-sm-4
+    = image_tag f.object.poster.url, class: "img-thumbnail img-poster"
+    = f.file_field :poster, class: "form-control hide file-poster"
+
+.form-group
+  = f.label :tech_rider, class: "col-sm-3"
+  .col-sm-8
+    = f.file_field :tech_rider, class: "form-control"
+.form-group
+  = f.label :contract_rider, class: "col-sm-3"
+  .col-sm-8
+    = f.file_field :contract_rider, class: "form-control"
+.form-group
+  = f.label :w9, class: "col-sm-3"
+  .col-sm-8
+    = f.file_field :w9, class: "form-control"
+.form-group
+  = f.label :resume, class: "col-sm-3"
+  .col-sm-8
+    = f.file_field :resume, class: "form-control"

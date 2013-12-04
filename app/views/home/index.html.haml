@@ -1,49 +1,78 @@
-.widget.stacked
-  .widget-header
-    %h3
-      Events
-  .widget-content.min-height-200
-    .img-thumbnail.col-md-12
-      .row
-        = form_for :query, url: root_path, html: { method: :get } do |f|
-          .col-md-3.text-right
-            = select_tag :artist, options_from_collection_for_select(@artists, "id", "name", params[:artist]), { :prompt => "Artists", class: "form-control" }
-          .col-md-3.text-right
-            = select_tag :date, options_for_select(["View Pasts", "View Upcomings"].map.with_index{|m, i|[m, i]}, params[:date]), { :prompt => "View All Date", class: "form-control" }
-          .col-md-6.text-right.inline
-            %button.btn.btn-default{type: "submit"} Search
-
-
-    .table-responsive
-      %table.table.table-striped.table-bordered
-        %thead
-          %tr
-            %th #
-            %th Date
-            %th Show Time
-            %th School
-            %th Artist
-            %th Status
-            %th Contact Sent?
-        %tbody
-          - @events.each do |event|
+.col-xs-12
+  .widget.stacked.widget-table
+    .widget-header
+      %h3
+        Upcoming Events
+    .widget-content.min-height-200
+      .table-responsive
+        %table.table.table-striped.table-bordered
+          %thead
             %tr
-              %td
-                = link_to event.id, event_path(event)
-              %td
-                = event.created_at.to_date
-              %td
-                = event.show_time
-              %td
-                = event.school_name
-              %td
-                = event.artist.name
-              %td
-                = event.status
-              %td
-                - if event.contract_file_name.nil?
-                  Not Sent
-                - else
-                  = link_to "Sent", event.contract.url
+              %th #
+              %th Date
+              %th Show Time
+              %th School
+              %th Artist
+              %th Status
+              %th Contact Sent?
+          %tbody
+            - @upcoming_events.each do |event|
+              %tr
+                %td
+                  = link_to event.id, event_path(event)
+                %td
+                  = event.created_at.to_date
+                %td
+                  = event.show_time
+                %td
+                  = event.school_name
+                %td
+                  = event.artist.name
+                %td
+                  = event.status
+                %td
+                  - if event.contract_file_name.nil?
+                    Not Sent
+                  - else
+                    = link_to "Sent", event.contract.url
 
-      = will_paginate @events, previous_label: "&laquo;", next_label: "&raquo;"
+        = will_paginate @upcoming_events, previous_label: "&laquo;", next_label: "&raquo;"
+.col-xs-12
+  .widget.stacked.widget-table
+    .widget-header
+      %h3
+        Past Events
+    .widget-content.min-height-200
+      .table-responsive
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %th #
+              %th Date
+              %th Show Time
+              %th School
+              %th Artist
+              %th Status
+              %th Contact Sent?
+          %tbody
+            - @past_events.each do |event|
+              %tr
+                %td
+                  = link_to event.id, event_path(event)
+                %td
+                  = event.created_at.to_date
+                %td
+                  = event.show_time
+                %td
+                  = event.school_name
+                %td
+                  = event.artist.name
+                %td
+                  = event.status
+                %td
+                  - if event.contract_file_name.nil?
+                    Not Sent
+                  - else
+                    = link_to "Sent", event.contract.url
+
+        = will_paginate @past_events, previous_label: "&laquo;", next_label: "&raquo;"
